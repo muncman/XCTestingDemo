@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 
+// For testing purposes only.
 @interface TestException : NSException
 
 @end
@@ -24,15 +25,31 @@
 
 #pragma mark - xUnit lifecycle methods
 
+// Class methods (added in the XCTestSuiteExtensions category in XCTestCase.h)
+
++ (void)setUp
+{
+    [super setUp];
+    // Put class setup code here. This method is called ONCE before any test methods in the class are invoked.
+}
+
++ (void)tearDown
+{
+    // Put class teardown code here. This method is called ONCE after all test methods in the class have been invoked.
+    [super tearDown];
+}
+
+// Instance methods
+
 - (void)setUp
 {
     [super setUp]; // Always call super.
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    // Put instance setup code here. This method is called before the invocation of EACH test method in the class.
 }
 
 - (void)tearDown
 {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    // Put instance teardown code here. This method is called after the invocation of EACH test method in the class.
     [super tearDown]; // Always call super. Note that is is called *after* your own tear down code; opposite of setUp.
 }
 
