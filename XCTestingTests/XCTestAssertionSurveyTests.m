@@ -179,11 +179,6 @@
 
 #pragma mark - Helper Methods
 
-- (void)throwSimpleException
-{
-    @throw @"The compiler made me do it.";
-}
-
 - (void)throwNSException
 {
     [NSException raise:@"Hell" format:@"on ObjC wheels"];
