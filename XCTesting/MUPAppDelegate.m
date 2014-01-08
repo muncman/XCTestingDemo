@@ -13,10 +13,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-
-    // NOTE: Unused on purpose for CI/Bot report(s).
-    NSArray *intentionallyUnused = [NSArray array];
-
     return YES;
 }
 							
