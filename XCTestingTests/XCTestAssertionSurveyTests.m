@@ -38,37 +38,43 @@
 
 #pragma mark - Simple demos of the assertions in XCTest
 
-// OCUnit => STAssertTrue
+// Boolean assertions
+
+/** OCUnit => STAssertTrue */
 - (void)testTrue
 {
     XCTAssertTrue(YES, @"What happend to: True dat?");
 }
 
-// OCUnit => STAssertFalse
+/** OCUnit => STAssertFalse */
 - (void)testFalse
 {
     XCTAssertFalse(NO, @"Maybe was \"falls\"?");
 }
 
-// OCUnit => STAssertTrue; XCTestAssert is essentially XCTAssertTrue
+/** OCUnit => STAssertTrue; XCTestAssert is essentially XCTAssertTrue */
 - (void)testGeneralAssert
 {
     XCTAssert(@"something" != nil, @"We got something for nothing?");
 }
 
-// OCUnit => STAssertNil
+// Nil assertions
+
+/** OCUnit => STAssertNil */
 - (void)testNil
 {
     XCTAssertNil(nil, @"Yep. Wait, what?");
 }
 
-// OCUnit => STAssertNotNil
+/** OCUnit => STAssertNotNil */
 - (void)testNotNil
 {
     XCTAssertNotNil(@"someting", @"WAT?");
 }
 
-// OCUnit => STAssertEqual
+// Equality assertions
+
+/** OCUnit => STAssertEqual */
 - (void)testEqual
 {
     int ten = 10;
@@ -78,7 +84,7 @@
     //       so I am not including the compared values in the failure format string.
 }
 
-// OCUnit => STAssertNotEqual
+/** OCUnit => STAssertNotEqual */
 - (void)testNotEqual
 {
     int ten = 10;
@@ -86,7 +92,7 @@
     XCTAssertNotEqual(ten, nine, @"should NOT have been equal.");
 }
 
-// OCUnit => STAssertEqualObjects
+/** OCUnit => STAssertEqualObjects */
 - (void)testObjectsEqual
 {
     NSString *first = @"identity";
@@ -94,7 +100,7 @@
     XCTAssertEqualObjects(first, second, @"should have been equal.");
 }
 
-// OCUnit => STAssertNotEqualObjects
+/** OCUnit => STAssertNotEqualObjects */
 - (void)testObjectsNotEqual
 {
     NSString *first = @"identity";
@@ -102,7 +108,7 @@
     XCTAssertNotEqualObjects(first, second, @"should NOT have been equal.");
 }
 
-// OCUnit => STAssertEqualWithAccuracy
+/** OCUnit => STAssertEqualWithAccuracy */
 - (void)testEqualWithAccuracy
 {
     float first = 10.0f;
@@ -110,7 +116,7 @@
     XCTAssertEqualWithAccuracy(first, second, 0.0002f, @"close, but no cigar");
 }
 
-// OCUnit => STAssertNotEqualWithAccuracy
+/** OCUnit => STAssertNotEqualWithAccuracy */
 - (void)testNotEqualWithAccuracy
 {
     float first = 10.0f;
@@ -118,37 +124,39 @@
     XCTAssertNotEqualWithAccuracy(first, second, 0.0002f, @"objects in mirror...?");
 }
 
-// OCUnit => STAssertThrows
+// Exception assertions
+
+/** OCUnit => STAssertThrows */
 - (void)testThrows
 {
     XCTAssertThrows([self throwNSException], @"throw a fit");
 }
 
-// OCUnit => STAssertThrowsSpecific
+/** OCUnit => STAssertThrowsSpecific */
 - (void)testSpecificThrows
 {
     XCTAssertThrowsSpecific([self throwNSException], NSException, @"throw a fit");
 }
 
-// OCUnit => STAssertThrowsSpecificNamed
+/** OCUnit => STAssertThrowsSpecificNamed */
 - (void)testSpecificNameThrows
 {
     XCTAssertThrowsSpecificNamed([self throwNSException], NSException, @"Hell", @"wrong exception specifics");
 }
 
-// OCUnit => STAssertNoThrow
+/** OCUnit => STAssertNoThrow; see also STAssertTrueNoThrow and STAssertFalseNoThrow */
 - (void)testThrowsNotForThee
 {
     XCTAssertNoThrow([self behave], @"it threw a fit");
 }
 
-// OCUnit => STAssertNoThrowSpecific
+/** OCUnit => STAssertNoThrowSpecific */
 - (void)testDoesNotThrowSpecific
 {
     XCTAssertNoThrowSpecific([self throwNSException], TestException, @"it was the wrong kind - specifically");
 }
 
-// OCUnit => STAssertNoThrowSpecificNamed
+/** OCUnit => STAssertNoThrowSpecificNamed */
 - (void)testDoesNotThrowSpecificNamed
 {
     XCTAssertNoThrowSpecificNamed([self throwNSException], NSException, @"Heaven", @"wrong exception specifics");
@@ -156,7 +164,7 @@
 
 #pragma mark - Demonstration methods that require editing to see the result
 
-// OCUnit => STFail
+/** OCUnit => STFail */
 - (void)testFail
 {
     if (NO) {
@@ -172,10 +180,6 @@
     // XCTAssert(value == nil, @"'%@' was nil!?", value);
     XCTAssert(value != nil, @"'%@' was nil!?", value);
 }
-
-/*
-    No direct XCTest equivalent for STAssertTrueNoThrow and STAssertFalseNoThrow
- */
 
 #pragma mark - Helper Methods
 
