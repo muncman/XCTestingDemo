@@ -121,7 +121,7 @@
 // OCUnit => STAssertThrows
 - (void)testThrows
 {
-    XCTAssertThrows([self throwSimpleException], @"throw a fit");
+    XCTAssertThrows([self throwNSException], @"throw a fit");
 }
 
 // OCUnit => STAssertThrowsSpecific
