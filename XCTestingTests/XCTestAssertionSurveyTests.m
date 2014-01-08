@@ -38,31 +38,37 @@
 
 #pragma mark - Simple demos of the assertions in XCTest
 
-- (void)testGeneralAssert
-{
-    XCTAssert(@"something" != nil, @"We got something for nothing?");
-}
-
+// OCUnit => STAssertTrue
 - (void)testTrue
 {
     XCTAssertTrue(YES, @"What happend to: True dat?");
 }
 
+// OCUnit => STAssertFalse
 - (void)testFalse
 {
     XCTAssertFalse(NO, @"Maybe was \"falls\"?");
 }
 
+// OCUnit => STAssertTrue; XCTestAssert is essentially XCTAssertTrue
+- (void)testGeneralAssert
+{
+    XCTAssert(@"something" != nil, @"We got something for nothing?");
+}
+
+// OCUnit => STAssertNil
 - (void)testNil
 {
     XCTAssertNil(nil, @"Yep. Wait, what?");
 }
 
+// OCUnit => STAssertNotNil
 - (void)testNotNil
 {
     XCTAssertNotNil(@"someting", @"WAT?");
 }
 
+// OCUnit => STAssertEqual
 - (void)testEqual
 {
     int ten = 10;
@@ -72,6 +78,7 @@
     //       so I am not including the compared values in the failure format string.
 }
 
+// OCUnit => STAssertNotEqual
 - (void)testNotEqual
 {
     int ten = 10;
@@ -79,6 +86,7 @@
     XCTAssertNotEqual(ten, nine, @"should NOT have been equal.");
 }
 
+// OCUnit => STAssertEqualObjects
 - (void)testObjectsEqual
 {
     NSString *first = @"identity";
@@ -86,6 +94,7 @@
     XCTAssertEqualObjects(first, second, @"should have been equal.");
 }
 
+// OCUnit => STAssertNotEqualObjects
 - (void)testObjectsNotEqual
 {
     NSString *first = @"identity";
@@ -93,6 +102,7 @@
     XCTAssertNotEqualObjects(first, second, @"should NOT have been equal.");
 }
 
+// OCUnit => STAssertEqualWithAccuracy
 - (void)testEqualWithAccuracy
 {
     float first = 10.0f;
@@ -100,6 +110,7 @@
     XCTAssertEqualWithAccuracy(first, second, 0.0002f, @"close, but no cigar");
 }
 
+// OCUnit => STAssertNotEqualWithAccuracy
 - (void)testNotEqualWithAccuracy
 {
     float first = 10.0f;
@@ -107,37 +118,52 @@
     XCTAssertNotEqualWithAccuracy(first, second, 0.0002f, @"objects in mirror...?");
 }
 
+// OCUnit => STAssertThrows
 - (void)testThrows
 {
     XCTAssertThrows([self throwSimpleException], @"throw a fit");
 }
 
+// OCUnit => STAssertThrowsSpecific
 - (void)testSpecificThrows
 {
     XCTAssertThrowsSpecific([self throwNSException], NSException, @"throw a fit");
 }
 
+// OCUnit => STAssertThrowsSpecificNamed
 - (void)testSpecificNameThrows
 {
     XCTAssertThrowsSpecificNamed([self throwNSException], NSException, @"Hell", @"wrong exception specifics");
 }
 
+// OCUnit => STAssertNoThrow
 - (void)testThrowsNotForThee
 {
     XCTAssertNoThrow([self behave], @"it threw a fit");
 }
 
+// OCUnit => STAssertNoThrowSpecific
 - (void)testDoesNotThrowSpecific
 {
     XCTAssertNoThrowSpecific([self throwNSException], TestException, @"it was the wrong kind - specifically");
 }
 
+// OCUnit => STAssertNoThrowSpecificNamed
 - (void)testDoesNotThrowSpecificNamed
 {
     XCTAssertNoThrowSpecificNamed([self throwNSException], NSException, @"Heaven", @"wrong exception specifics");
 }
 
 #pragma mark - Demonstration methods that require editing to see the result
+
+// OCUnit => STFail
+- (void)testFail
+{
+    if (NO) {
+        // Change NO above to YES to demonstrate this.
+        XCTFail(@"If you need something to fail, this is the way.");
+    }
+}
 
 - (void)testFailMessageFormatting
 {
@@ -147,13 +173,9 @@
     XCTAssert(value != nil, @"'%@' was nil!?", value);
 }
 
-- (void)testFail
-{
-    if (NO) {
-        // Change NO above to YES to demonstrate this.
-        XCTFail(@"If you need something to fail, this is the way.");
-    }
-}
+/*
+    No direct XCTest equivalent for STAssertTrueNoThrow and STAssertFalseNoThrow
+ */
 
 #pragma mark - Helper Methods
 
