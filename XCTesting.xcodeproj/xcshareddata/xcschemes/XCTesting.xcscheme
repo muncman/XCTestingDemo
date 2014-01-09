@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "0500"
-   version = "1.3">
+   version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -92,5 +92,23 @@
    <ArchiveAction
       buildConfiguration = "Release"
       revealArchiveInOrganizer = "YES">
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "pwd &gt; /tmp/XCTesting/post_action_directory.txt&#10;echo ${PROJECT_DIR} &gt; /tmp/XCTesting/project_dir_directory.txt&#10;${PROJECT_DIR}/Scripts/appledoc.sh &amp;&gt; /tmp/XCTesting/appledoc.out&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "38BBC915187C97FE00D8FE99"
+                     BuildableName = "XCTesting.app"
+                     BlueprintName = "XCTesting"
+                     ReferencedContainer = "container:XCTesting.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
    </ArchiveAction>
 </Scheme>
