@@ -97,7 +97,7 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "BOT_OUTPUT=/Bots&#10;mkdir -p $BOT_OUTPUT&#10;pwd &gt; $BOT_OUTPUT/post_action_directory.txt&#10;echo ${PROJECT_DIR} &gt; $BOT_OUTPUT/project_dir_directory.txt&#10;# Causes log diarrhea: echo *** Running Appledoc ***&#10;${PROJECT_DIR}/Scripts/appledoc.sh &amp;&gt; $BOT_OUTPUT/appledoc_output.txt&#10;&#10;# Method for killing the parent process to fail a bot integration.&#10;#kill $PPID&#10;#exit 1&#10;">
+               scriptText = "BOT_OUTPUT=/Bots&#10;mkdir -p $BOT_OUTPUT&#10;pwd &gt; $BOT_OUTPUT/${PRODUCT_NAME}/post_action_directory.txt&#10;echo ${PROJECT_DIR} &gt; $BOT_OUTPUT/${PRODUCT_NAME}/project_dir_directory.txt&#10;# Causes log diarrhea: echo *** Running Appledoc ***&#10;${PROJECT_DIR}/Scripts/appledoc.sh &amp;&gt; $BOT_OUTPUT/${PRODUCT_NAME}/appledoc_output.txt&#10;&#10;# Method for killing the parent process to fail a bot integration.&#10;#kill $PPID&#10;#exit 1&#10;">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
