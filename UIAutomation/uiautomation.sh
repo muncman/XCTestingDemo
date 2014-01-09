@@ -25,6 +25,23 @@ then
 	echo "No device type passed in (1 for iPhone, 2 for iPad), so defaulting to iPhone"
 fi
 
+# $WORKSPACE is already defined if run from within Jenkins. 
+if [ -z "$WORKSPACE" ]
+then
+  # For Xcode scheme pre- and post-action invocation (and so Bots).
+  # Try this first. 
+  WORKSPACE=${PROJECT_DIR} 
+  echo "set WORKSPACE to $WORKSPACE"
+fi
+
+if [ -z "$WORKSPACE" ]
+then
+  # For command line invocation. 
+  # This is the final fallback. 
+  WORKSPACE=`pwd` 
+  echo "set WORKSPACE to $WORKSPACE"
+fi
+
 # We need a temporary place to build the app bundle
 TMP_BUILD_DIR="/Bots/XCTesting"
 
@@ -33,7 +50,7 @@ TMP_BUILD_DIR="/Bots/XCTesting"
 mkdir -p $TMP_BUILD_DIR
 
 # Build our application and place the final bundle in our temporary directory
-cd ..
+cd $WORKSPACE
 xcodebuild -sdk iphonesimulator clean build CONFIGURATION_BUILD_DIR=$TMP_BUILD_DIR
 cd -
 
@@ -52,9 +69,9 @@ mkdir -p $UIAUTOMATION_RESULTS
         -c "Add :UIDeviceFamily: integer $DEVICE_TYPE"
 
 echo `pwd`
-./unix_instruments \
+$WORKSPACE/UIAutomation/unix_instruments \
   -D $UIAUTOMATION_RESULTS/trace \
-  -t UIAutomationTemplate.tracetemplate \
+  -t $WORKSPACE/UIAutomation/UIAutomationTemplate.tracetemplate \
   $TMP_BUILD_DIR/XCTesting.app \
   -e UIARESULTSPATH $UIAUTOMATION_RESULTS \
   -e UIASCRIPT "$SCRIPT_NAME"

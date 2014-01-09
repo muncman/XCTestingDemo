@@ -69,7 +69,6 @@ get_error_status() {
   # Catch "00-00-00 00:00:00 +000 Fail:"
   # Catch "00-00-00 00:00:00 +000 Error:"
   # Catch "00-00-00 00:00:00 +000 None: Script threw an uncaught JavaScript error"
-  ruby -e 'kill $PPID if STDIN.read =~ /Instruments Usage Error|Instruments Trace Error|^\d+-\d+-\d+ \d+:\d+:\d+ [-+]\d+ (Fail:|Error:|None: Script threw an uncaught JavaScript error)/'
   ruby -e 'exit 1 if STDIN.read =~ /Instruments Usage Error|Instruments Trace Error|^\d+-\d+-\d+ \d+:\d+:\d+ [-+]\d+ (Fail:|Error:|None: Script threw an uncaught JavaScript error)/'
 }
 
