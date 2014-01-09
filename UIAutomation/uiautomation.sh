@@ -54,7 +54,7 @@ mkdir -p $TMP_BUILD_DIR
 
 # Build our application and place the final bundle in our temporary directory
 cd $WORKSPACE
-xcodebuild -sdk iphonesimulator clean build CONFIGURATION_BUILD_DIR=$TMP_BUILD_DIR
+xcodebuild -sdk iphonesimulator clean build CONFIGURATION_BUILD_DIR=$TMP_BUILD_DIR TARGET_DEVICE_FAMILY=$DEVICE_TYPE
 cd -
 
 # Define UIAutomation results directory
