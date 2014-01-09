@@ -26,7 +26,7 @@ then
 fi
 
 # We need a temporary place to build the app bundle
-TMP_BUILD_DIR="/Bots/XCTesting/"
+TMP_BUILD_DIR="/Bots/XCTesting"
 
 # TODO: clean out previous build
 # Ensure our temporary directory exists
@@ -37,9 +37,13 @@ cd ..
 xcodebuild -sdk iphonesimulator clean build CONFIGURATION_BUILD_DIR=$TMP_BUILD_DIR
 cd -
 
+# Define UIAutomation results directory
+UIAUTOMATION_RESULTS=$TMP_BUILD_DIR/UIAutomation
+
 # Clean out any existing automation results (we don't need to keep them for this demo)
-rm -rf automation_results
-mkdir -p automation_results
+mkdir -p $UIAUTOMATION_RESULTS
+rm -rf $UIAUTOMATION_RESULTS
+mkdir -p $UIAUTOMATION_RESULTS
 
 # Control which type of simulator mode we want.
 /usr/libexec/PlistBuddy $TMP_BUILD_DIR/XCTesting.app/Info.plist \
@@ -49,10 +53,10 @@ mkdir -p automation_results
 
 echo `pwd`
 ./unix_instruments \
-  -D automation_results/trace \
+  -D $UIAUTOMATION_RESULTS/trace \
   -t UIAutomationTemplate.tracetemplate \
   $TMP_BUILD_DIR/XCTesting.app \
-  -e UIARESULTSPATH automation_results \
+  -e UIARESULTSPATH $UIAUTOMATION_RESULTS \
   -e UIASCRIPT "$SCRIPT_NAME"
 
 # Another way to make sure the simulator isn't already running.
