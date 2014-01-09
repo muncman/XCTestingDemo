@@ -89,6 +89,8 @@ then
   echo "set XCODE_DEVELOPER_DIR_PATH to $XCODE_DEVELOPER_DIR_PATH"
 fi
 
+echo About to run: instruments -D $UIAUTOMATION_RESULTS/trace -t $WORKSPACE/UIAutomation/UIAutomationTemplate.tracetemplate $TMP_BUILD_DIR/XCTesting.app -e UIASCRIPT "$SCRIPT_NAME" -e UIARESULTSPATH $UIAUTOMATION_RESULTS | grep "Error" > $UIAUTOMATION_RESULTS/uiautomation_errors.txt
+
 instruments \
   -D $UIAUTOMATION_RESULTS/trace \
   -t $WORKSPACE/UIAutomation/UIAutomationTemplate.tracetemplate \
