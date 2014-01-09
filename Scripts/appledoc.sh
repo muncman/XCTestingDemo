@@ -29,7 +29,7 @@ fi
 
 echo "Generating Appledoc HTML and Docset."
 
-APPLEDOC_RESULTS="/tmp/XCTesting/Reports/Appledoc"
+APPLEDOC_RESULTS="$TMPDIR/XCTesting/Reports/Appledoc"
 
 /usr/local/bin/appledoc \
 	--project-name "XCTest Demo" \
