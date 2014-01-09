@@ -97,7 +97,7 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "pwd &gt; /tmp/XCTesting/post_action_directory.txt&#10;echo ${PROJECT_DIR} &gt; /tmp/XCTesting/project_dir_directory.txt&#10;${PROJECT_DIR}/Scripts/appledoc.sh &amp;&gt; /tmp/XCTesting/appledoc.out&#10;">
+               scriptText = "pwd &gt; $TMPDIR/XCTesting/post_action_directory.txt&#10;echo ${PROJECT_DIR} &gt; $TMPDIR/XCTesting/project_dir_directory.txt&#10;${PROJECT_DIR}/Scripts/appledoc.sh &amp;&gt; $TMPDIR/XCTesting/appledoc.out&#10;">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
