@@ -94,8 +94,8 @@
 /** OCUnit => STAssertEqual */
 - (void)testEqual
 {
-    int ten = 10;
-    int ninePlusOne = 10;
+    NSInteger ten = 10;
+    NSInteger ninePlusOne = 10;
     XCTAssertEqual(ten, ninePlusOne, @"should have been equal.");
     // NOTE: The 'equal' assertions do a decent job of reporting the mismatched values on failure,
     //       so I am not including the compared values in the failure format string.
@@ -104,8 +104,8 @@
 /** OCUnit => STAssertNotEqual */
 - (void)testNotEqual
 {
-    int ten = 10;
-    int nine = 9;
+    NSInteger ten = 10;
+    NSInteger nine = 9;
     XCTAssertNotEqual(ten, nine, @"should NOT have been equal.");
 }
 
@@ -128,16 +128,16 @@
 /** OCUnit => STAssertEqualWithAccuracy */
 - (void)testEqualWithAccuracy
 {
-    float first = 10.0f;
-    float second = 10.0001f;
+    CGFloat first = 10.0f;
+    CGFloat second = 10.0001f;
     XCTAssertEqualWithAccuracy(first, second, 0.0002f, @"close, but no cigar");
 }
 
 /** OCUnit => STAssertNotEqualWithAccuracy */
 - (void)testNotEqualWithAccuracy
 {
-    float first = 10.0f;
-    float second = 10.0003f;
+    CGFloat first = 10.0f;
+    CGFloat second = 10.0003f;
     XCTAssertNotEqualWithAccuracy(first, second, 0.0002f, @"objects in mirror...?");
 }
 
